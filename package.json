@@ -1,0 +1,22 @@
+{
+  "name": "tcb-router",
+  "version": "0.0.1",
+  "description": "A router for tencent cloud functions",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/flytam/tcb-router.git"
+  },
+  "author": "flytam",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/flytam/tcb-router/issues"
+  },
+  "homepage": "https://github.com/flytam/tcb-router#readme",
+  "devDependencies": {
+    "jest": "^23.4.2"
+  }
+}
