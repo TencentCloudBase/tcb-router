@@ -15,8 +15,8 @@ npm install tcb-router
 ```javascript
 const { TcbRouter } = require("tcb-router");
 
-exports.main = async (event, context) => {
-  const app = new TabRouter({ event, context, defaultRes: true });
+exports.main = async (event, context, callback) => {
+  const app = new TabRouter({ event, context, defaultRes: true, callback });
   app.use((req, res, next) => {
     next();
   });
@@ -27,8 +27,8 @@ exports.main = async (event, context) => {
       next();
     }
   });
-  app.receive("/login", () => {});
-  return app;
+  app.receive("/login", (req, res) => {});
+  app.apply(); // 应用
 };
 ```
 
@@ -48,13 +48,17 @@ exports.main = async (event, context) => {
 }
 ```
 
+### app.use
+
+1、use(string,function | array[function])
+
 ### req
 
-req.body 相当于 event 的值
+req.event 相当于 event 的值
 
 ### res
 
-res.body
+res.data
 
 res.code
 
