@@ -9,7 +9,7 @@
 基于 express 风格
 
 ```bash
-npm install tab-router
+npm install tcb-router
 ```
 
 ```javascript
