@@ -16,19 +16,19 @@ npm install tcb-router
 const { TcbRouter } = require("tcb-router");
 
 exports.main = async (event, context, callback) => {
-  const app = new TabRouter({ event, context, defaultRes: true, callback });
-  app.use((req, res, next) => {
-    next();
-  });
-  app.use((req, res, next) => {
-    if (req.xxx) {
-      res.end();
-    } else {
-      next();
-    }
-  });
-  app.receive("/login", (req, res) => {});
-  app.apply(); // 应用
+    const app = new TabRouter({ event, context, defaultRes: true, callback });
+    app.use((req, res, next) => {
+        next();
+    });
+    app.use((req, res, next) => {
+        if (req.xxx) {
+            res.callback(null, "xxxx");
+        } else {
+            next();
+        }
+    });
+    app.receive("/login", (req, res) => {});
+    app.apply(); // 应用
 };
 ```
 
@@ -36,9 +36,9 @@ exports.main = async (event, context, callback) => {
 
 参数
 
-- event
-- context
-- defaultRes : Boolean 表示是否使用默认回参
+-   event
+-   context
+-   defaultRes : Boolean 表示是否使用默认回参
 
 ```javascript
 {
@@ -54,7 +54,11 @@ exports.main = async (event, context, callback) => {
 
 ### req
 
-req.event 相当于 event 的值
+event 相当于 event 的值
+
+data 小程序端的 data 字段
+
+url 需要匹配的路径
 
 ### res
 

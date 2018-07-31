@@ -5,15 +5,19 @@ class TabRouter {
             throw new Error("Callback must be a function");
         }
         this._middlewares = [];
+        const old_callback = callback;
         if (defaultRes) {
             callback = (err, data) => {
                 if (err) {
                     if (err.message) {
                         err = err.message;
                     }
-                    callback(null, new Res({ message: err, code: 1 }));
+                    return old_callback(
+                        null,
+                        new Res({ message: err, code: 1 })
+                    );
                 } else {
-                    callback(null, new Res({ data }));
+                    return old_callback(null, new Res({ data }));
                 }
             };
         }
@@ -41,15 +45,26 @@ class TabRouter {
         const next = err => {
             if (index === this._middlewares.length) {
                 this._res.callback("无法匹配");
+                return;
             } else if (err) {
                 this._res.callback(err);
-            } else if (
-                path === "*" ||
-                new RegExp(`^${this._req.url}$`).test(path)
-            ) {
-                handle(this._req, this._res, next);
             } else {
-                next();
+                const { handle, method, path } = this._middlewares[index++];
+                if (
+                    path === "*" ||
+                    new RegExp(`^${this._req.url}$`).test(path)
+                ) {
+                    if (method === "middleware") {
+                        // 中间件
+                        handle(this._req, this._res, next);
+                    } else {
+                        // 路由
+                        handle(this._req, this._res);
+                    }
+                } else {
+                    index++;
+                    next();
+                }
             }
         };
         next();

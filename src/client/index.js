@@ -8,6 +8,14 @@ class TcbRouterClient {
         }
         this._functionName = functionName;
     }
-    send(route, data) {}
+    send(route, data) {
+        wx.callFunction({
+            name: this._functionName,
+            data: {
+                data,
+                route
+            }
+        });
+    }
 }
 module.exports = TcbRouterClient;

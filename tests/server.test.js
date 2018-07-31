@@ -51,11 +51,38 @@ describe("receive方法测试", () => {
     });
 });
 describe("apply方法测试", () => {
-    const customCallback = (err, data) => {
-        return data;
-    };
-    const app = new TabRouter({
-        callback: customCallback,
-        event: { userInfo: "xxxx", data: { test: 123, url: "/xx" } }
+    test("apply 模拟运行", () => {
+        const customCallback = (err, data) => {
+            // ...
+            return data;
+        };
+        const customEvent = {
+            userInfo: "xxxx",
+            data: { username: "Tom", url: "/xx" }
+        };
+        const app = new TabRouter({
+            callback: customCallback,
+            event: customEvent,
+            defaultRes: true
+        });
+        app.use((req, res, next) => {
+            req.test = 111;
+            next();
+        });
+        app.use("/xx", (req, res, next) => {
+            next();
+        });
+        app.receive("/xx", (req, res) => {
+            expect(
+                res.callback(null, {
+                    test: req.test
+                })
+            ).toMatchObject({
+                code: 0,
+                message: null,
+                data: { test: 111 }
+            });
+        });
+        app.apply();
     });
 });
