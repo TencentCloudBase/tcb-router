@@ -1,8 +1,12 @@
 # tcb-router
 
-小程序云函数路由，包含小程序端和云函数端
+小程序云函数类路由，包含小程序端和云函数端
+
+优化服务端函数处理逻辑
 
 ## API 设计阶段
+
+## server 基础部分完成，客户端尚未开工
 
 ## 云函数端
 
@@ -68,7 +72,7 @@ res.code
 
 res.message
 
-## 小程序端
+## 小程序端 该部分尚未编写...
 
 ```javascript
 const {TcbRouterClient} = require("tcb-router");
