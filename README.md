@@ -42,7 +42,7 @@ exports.main = async (event, context, callback) => {
 };
 ```
 
-### TabRouter 初始化
+### TcbRouter 初始化
 
 参数
 
