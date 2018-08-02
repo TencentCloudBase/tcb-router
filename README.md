@@ -4,6 +4,12 @@
 
 优化服务端函数处理逻辑
 
+## 测试
+
+```bash
+yarn run test
+```
+
 ## API 设计阶段
 
 ## server 基础部分完成，客户端尚未开工
@@ -13,14 +19,14 @@
 基于 express 风格
 
 ```bash
-npm install tcb-router
+npm install tcb-router // 尚未上npm
 ```
 
 ```javascript
 const { TcbRouter } = require("tcb-router");
 
 exports.main = async (event, context, callback) => {
-    const app = new TabRouter({ event, context, defaultRes: true, callback });
+    const app = new TcbRouter({ event, context, defaultRes: true, callback });
     app.use((req, res, next) => {
         next();
     });
@@ -66,11 +72,9 @@ url 需要匹配的路径
 
 ### res
 
-res.data
+res.callback
 
-res.code
-
-res.message
+返回内容
 
 ## 小程序端 该部分尚未编写...
 
