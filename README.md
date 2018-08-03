@@ -1,5 +1,7 @@
 # tcb-router
 
+> 该库可用于云函数路由处理以及即将上线的小程序云函数路由处理。目前该库仍处于不稳定开发阶段
+
 小程序云函数类路由，包含小程序端和云函数端
 
 优化服务端函数处理逻辑
@@ -13,7 +15,7 @@
 基于 express 风格
 
 ```bash
-npm install tcb-router
+npm install tcb-router // 尚未上线npm
 ```
 
 ```javascript
