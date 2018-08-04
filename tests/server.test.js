@@ -1,6 +1,6 @@
-const TabRouter = require("../src/server/index");
+const TcbRouter = require("../src/server/index");
 describe("req测试", () => {
-    const app = new TabRouter({
+    const app = new TcbRouter({
         callback: function() {},
         event: { userInfo: "xxxx", data: { test: 123, url: "/xx" } }
     });
@@ -15,7 +15,7 @@ describe("req测试", () => {
 });
 
 describe("use方法测试", () => {
-    const app = new TabRouter({
+    const app = new TcbRouter({
         callback: function() {},
         event: { userInfo: "xxxx", data: { test: 123, url: "/xx" } }
     });
@@ -33,7 +33,7 @@ describe("use方法测试", () => {
     });
 });
 describe("receive方法测试", () => {
-    const app = new TabRouter({
+    const app = new TcbRouter({
         callback: function() {},
         event: { userInfo: "xxxx", data: { test: 123, url: "/xx" } }
     });
@@ -60,7 +60,7 @@ describe("apply方法测试", () => {
             userInfo: "xxxx",
             data: { username: "Tom", url: "/xx" }
         };
-        const app = new TabRouter({
+        const app = new TcbRouter({
             callback: customCallback,
             event: customEvent,
             defaultRes: true
@@ -85,4 +85,44 @@ describe("apply方法测试", () => {
         });
         app.apply();
     });
+    test("测试中间件把请求拦截掉",() =>{
+        const customCallback = (err, data) => {
+            // ...
+            return data;
+        };
+        const customEvent = {
+            userInfo: "xxxx",
+            data: { username: "Tom", url: "/xx",valid:false }
+        };
+        const app = new TcbRouter({
+            callback: customCallback,
+            event: customEvent,
+            defaultRes: true
+        });
+        app.use((req, res, next) => {
+            if (req.event && req.event.valid){
+                next();
+            }else{
+                // 直接返回
+                expect(
+                    res.callback('invalid')
+                ).toMatchObject({
+                    code: 1,
+                    message: 'invalid',
+                    data: null
+                });
+            }
+           
+        });
+        app.use("/xx", (req, res, next) => {
+            console.log(111)
+            next();
+        });
+        app.receive("/xx", (req, res) => {
+                res.callback(null, {
+                    test: req.test
+                })
+        });
+        app.apply();
+    })
 });

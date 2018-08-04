@@ -1,5 +1,5 @@
 const Res = require("./lib/res");
-class TabRouter {
+class TcbRouter {
     constructor({ event, defaultRes, callback }) {
         if (!callback || typeof callback !== "function") {
             throw new Error("Callback must be a function");
@@ -70,4 +70,4 @@ class TabRouter {
         next();
     }
 }
-module.exports = TabRouter;
+module.exports = TcbRouter;
