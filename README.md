@@ -39,7 +39,7 @@ exports.main = async (event, context, callback) => {
             next();
         }
     });
-    app.receive("/login", (req, res) => {});
+    app.receive("login", (req, res) => {});
     app.apply(); // 应用
 };
 ```
@@ -70,7 +70,7 @@ event 相当于 event 的值
 
 data 小程序端的 data 字段
 
-url 需要匹配的路径
+url 需要匹配的路径，通过云函数入口的event.url字段传入。*表示匹配任意路径，传入其它值是精准匹配
 
 ### res
 

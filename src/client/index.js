@@ -17,5 +17,8 @@ class TcbRouterClient {
             }
         });
     }
+    get(){}
+    post(){}
+    delete(){}
 }
 module.exports = TcbRouterClient;

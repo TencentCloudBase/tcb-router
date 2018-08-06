@@ -1,4 +1,4 @@
 module.exports = {
   TcbRouterClient: require("./src/client/index"),
-  TabRouter: require("./src/server/index")
+  TcbRouter: require("./src/server/index")
 };
