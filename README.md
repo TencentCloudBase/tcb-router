@@ -39,8 +39,11 @@ exports.main = async (event, context, callback) => {
             next();
         }
     });
-    app.receive("login", (req, res) => {});
-    app.apply(); // 应用
+    app.receive("login", async (req, res) => {
+        const result = await getFromDatabase();
+        res.callback(null, { result });
+    });
+    await app.apply(); // 应用
 };
 ```
 
@@ -50,9 +53,10 @@ exports.main = async (event, context, callback) => {
 
 -   event
 -   context
--   defaultRes : Boolean 表示是否使用默认回参
+-   defaultRes : Boolean 表示是否使用默认回参， 默认是否，和云函数提供的 callback 相同
 
 ```javascript
+// 默认回参
 {
     code: 0 | other， // 0 表示正常
     data: null | {}, //返回的数据
@@ -70,7 +74,7 @@ event 相当于 event 的值
 
 data 小程序端的 data 字段
 
-url 需要匹配的路径，通过云函数入口的event.url字段传入。*表示匹配任意路径，传入其它值是精准匹配
+url 需要匹配的路径，通过云函数入口的 event.url 字段传入。\*表示匹配任意路径，传入其它值是精准匹配
 
 ### res
 
@@ -86,7 +90,7 @@ const client = new TcbRouterClient({
   functionName: "test", //调用的云函数名字
 });
 async login(){
-const {data,code,message} = client.send("/login",{
+const {data,code,message} = client.send("login",{
 username:"flytam",
 password:"password"
 })
