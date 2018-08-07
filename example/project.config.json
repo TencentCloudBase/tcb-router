@@ -1,0 +1,48 @@
+{
+	"description": "项目配置文件。",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": false,
+		"minified": false,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.2.2",
+	"appid": "wx4f6a5800a8abe179",
+	"projectname": "%E7%94%A8%E6%88%B7%E7%BB%84%E4%BB%B6%E4%BE%8B%E5%AD%90",
+	"isGameTourist": false,
+	"miniprogramRoot": "client",
+	"cloudfunctionRoot": "./cloud/functions",
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 0,
+			"list": [
+				{
+					"id": -1,
+					"name": "login-page",
+					"pathName": "pages/main/index"
+				}
+			]
+		}
+	}
+}

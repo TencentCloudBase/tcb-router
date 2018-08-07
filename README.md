@@ -21,7 +21,7 @@ yarn run test
 基于 express 风格
 
 ```bash
-npm install tcb-router // 尚未上npm
+npm install tcb-router
 ```
 
 ```javascript

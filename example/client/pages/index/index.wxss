@@ -1,0 +1,5 @@
+.img {
+  width: 300rpx;
+  height: 300rpx;
+  border-radius: 50%;
+}
