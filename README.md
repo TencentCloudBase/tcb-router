@@ -1,5 +1,18 @@
 # tcb-router
 
+[![NPM version][npm-image]][npm-url]
+[![David deps][david-image]][david-url]
+[![npm download][download-image]][download-url]
+[![npm license][license-image]][download-url]
+
+[npm-image]: https://img.shields.io/npm/v/tcb-router.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/tcb-router
+[david-image]: https://img.shields.io/david/673800357/tcb-router.svg?style=flat-square
+[david-url]: https://david-dm.org/673800357/tcb-router
+[download-image]: https://img.shields.io/npm/dm/tcb-router.svg?style=flat-square
+[download-url]: https://npmjs.org/package/tcb-router
+[license-image]: https://img.shields.io/npm/l/tcb-router.svg
+
 > 该库可用于云函数路由处理以及即将上线的小程序云函数路由处理。目前该库仍处于不稳定开发阶段
 
 小程序云函数类路由，包含小程序端和云函数端
