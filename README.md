@@ -1,6 +1,7 @@
 # tcb-router
 
 [![NPM version][npm-image]][npm-url]
+[![Build Status](https://travis-ci.org/flytam/tcb-router.svg?branch=master)](https://travis-ci.org/flytam/tcb-router)
 [![David deps][david-image]][david-url]
 [![npm download][download-image]][download-url]
 [![npm license][license-image]][download-url]
