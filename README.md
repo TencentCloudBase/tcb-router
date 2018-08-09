@@ -2,14 +2,13 @@
 
 [![NPM version][npm-image]][npm-url]
 [![Build Status](https://travis-ci.org/flytam/tcb-router.svg?branch=master)](https://travis-ci.org/flytam/tcb-router)
-[![David deps][david-image]][david-url]
 [![npm download][download-image]][download-url]
 [![npm license][license-image]][download-url]
+[![Coverage Status](https://coveralls.io/repos/github/flytam/tcb-router/badge.svg?branch=master)](https://coveralls.io/github/flytam/tcb-router?branch=master)
 
 [npm-image]: https://img.shields.io/npm/v/tcb-router.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/tcb-router
 [david-image]: https://img.shields.io/david/673800357/tcb-router.svg?style=flat-square
-[david-url]: https://david-dm.org/673800357/tcb-router
 [download-image]: https://img.shields.io/npm/dm/tcb-router.svg?style=flat-square
 [download-url]: https://npmjs.org/package/tcb-router
 [license-image]: https://img.shields.io/npm/l/tcb-router.svg
@@ -46,6 +45,7 @@ const { TcbRouter } = require("tcb-router");
 exports.main = async (event, context, callback) => {
     const app = new TcbRouter({ event, context, defaultRes: true, callback });
     app.use((req, res, next) => {
+        // 可以像在express中那样使用中间件机制，不调用next的话就不会走到下一个路由了
         next();
     });
     app.use((req, res, next) => {
