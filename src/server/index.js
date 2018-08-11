@@ -57,7 +57,6 @@ class TcbRouter {
             if (pathIsArray && (i = path.indexOf(this._req.url)) > -1) {
                 // path 是数组的情况
                 goNext = false;
-                handle = handle[i];
                 if (method === "middleware") {
                     // 中间件
                     console.log("进入中间件");

@@ -178,7 +178,6 @@ describe("apply方法测试", () => {
             next();
         });
         app.receive(["nonono", "test", "hahaha"], (req, res) => {
-            console.log("error");
             expect(
                 res.callback(null, { valid: req.event.valid })
             ).toMatchObject({
@@ -189,5 +188,6 @@ describe("apply方法测试", () => {
                 }
             });
         });
+        app.apply();
     });
 });
