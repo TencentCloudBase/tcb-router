@@ -2,24 +2,24 @@ const TcbRouter = require("../src/server/index");
 describe("req测试", () => {
     const app = new TcbRouter({
         callback: function() {},
-        event: { userInfo: "xxxx", test: 123, url: "/xx" }
+        event: { userInfo: "xxxx", test: 123, $url: "xx" }
     });
     test("req", () => {
         expect(app._req).toMatchObject({
             event: {
                 userInfo: "xxxx",
                 test: 123,
-                url: "/xx"
+                $url: "xx"
             }
         });
-        expect(app._req).toHaveProperty("url", "/xx");
+        expect(app._req).toHaveProperty("url", "xx");
     });
 });
 
 describe("use方法测试", () => {
     const app = new TcbRouter({
         callback: function() {},
-        event: { userInfo: "xxxx", test: 123, url: "/xx" }
+        event: { userInfo: "xxxx", test: 123, $url: "xx" }
     });
     test("use传入函数只有一个参数的情况", () => {
         app.use((req, res) => {});
@@ -37,7 +37,7 @@ describe("use方法测试", () => {
 describe("receive方法测试", () => {
     const app = new TcbRouter({
         callback: function() {},
-        event: { userInfo: "xxxx", test: 123, url: "/xx" }
+        event: { userInfo: "xxxx", test: 123, $url: "xx" }
     });
     test("receive测试传入函数只有一个参数的情况", () => {
         app.receive((req, res) => {});
@@ -45,11 +45,21 @@ describe("receive方法测试", () => {
         expect(app._middlewares[0]).toHaveProperty("path", "*");
         expect(app._middlewares[0]).toHaveProperty("method", "receive");
     });
-    test("receive传入函数有两个参数的情况", () => {
+    test("receive两个参数第一个参数为字符串的情况", () => {
         app.receive("test", (req, res) => {});
         expect(app._middlewares[1]).toHaveProperty("handle");
         expect(app._middlewares[1]).toHaveProperty("path", "test");
         expect(app._middlewares[1]).toHaveProperty("method", "receive");
+    });
+    test("receive两个参数第一个参数为数组的情况", () => {
+        app.receive(["nonono", "test", "hahaha"], (req, res) => {});
+        expect(app._middlewares[2]).toHaveProperty("handle");
+        expect(app._middlewares[2]).toHaveProperty("path", [
+            "nonono",
+            "test",
+            "hahaha"
+        ]);
+        expect(app._middlewares[2]).toHaveProperty("method", "receive");
     });
 });
 describe("apply方法测试", () => {
@@ -61,7 +71,7 @@ describe("apply方法测试", () => {
         const customEvent = {
             userInfo: "xxxx",
             username: "Tom",
-            url: "/xx"
+            $url: "xx"
         };
         const app = new TcbRouter({
             callback: customCallback,
@@ -72,10 +82,10 @@ describe("apply方法测试", () => {
             req.test = 111;
             next();
         });
-        app.use("/xx", (req, res, next) => {
+        app.use("xx", (req, res, next) => {
             next();
         });
-        app.receive("/xx", (req, res) => {
+        app.receive("xx", (req, res) => {
             expect(
                 res.callback(null, {
                     test: req.test
@@ -88,14 +98,14 @@ describe("apply方法测试", () => {
         });
         app.apply();
     });
-    test("异步测试", done => {
+    test("传入回调函数含有异步的测试", done => {
         const customCallback = (err, data) => {
             // ...
             return data;
         };
         const customEvent = {
             userInfo: "xxxx",
-            url: "xx"
+            $url: "xx"
         };
         const app = new TcbRouter({
             callback: customCallback,
@@ -121,7 +131,7 @@ describe("apply方法测试", () => {
         app.apply();
         console.log("apply end");
     });
-    test("测试中间件把请求拦截掉", () => {
+    test("测试中间件把请求拦截掉+callback测试", () => {
         const customCallback = (err, data) => {
             // ...
             return data;
@@ -129,7 +139,7 @@ describe("apply方法测试", () => {
         const customEvent = {
             userInfo: "xxxx",
             username: "Tom",
-            url: "/xx",
+            $url: "xx",
             valid: false
         };
         const app = new TcbRouter({
@@ -149,10 +159,11 @@ describe("apply方法测试", () => {
                 });
             }
         });
-        app.use("/xx", (req, res, next) => {
+        app.use("xx", (req, res, next) => {
             next();
         });
-        app.receive("/xx", (req, res) => {
+        app.receive("xx", (req, res) => {
+            console.error("看到我就算你测试通过也是错误的！！！！！");
             res.callback(null, {
                 test: req.test
             });

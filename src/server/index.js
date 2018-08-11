@@ -21,7 +21,7 @@ class TcbRouter {
                 }
             };
         }
-        this._req = { event, url: event.url };
+        this._req = { event, url: event.$url };
         this._res = { callback };
     }
     receive(path, handle) {
@@ -52,9 +52,24 @@ class TcbRouter {
         // 该用while
         while (index < this._middlewares.length && goNext) {
             const { handle, method, path } = this._middlewares[index++];
-            if (
+            const pathIsArray = Array.isArray(path);
+            let i;
+            if (pathIsArray && (i = path.indexOf(this._req.url)) > -1) {
+                // path 是数组的情况
+                goNext = false;
+                handle = handle[i];
+                if (method === "middleware") {
+                    // 中间件
+                    console.log("进入中间件");
+                    handle(this._req, this._res, makeNextTrue);
+                } else {
+                    // 路由
+                    console.log("本次调用路由路径", path);
+                    return handle(this._req, this._res);
+                }
+            } else if (
                 path === "*" ||
-                new RegExp(`^${this._req.url}$`).test(path) // 暂时只精准匹配
+                new RegExp(`^${this._req.url}$`).test(path)
             ) {
                 goNext = false;
                 if (method === "middleware") {
