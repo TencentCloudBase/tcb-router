@@ -63,11 +63,11 @@ describe("receive方法测试", () => {
     });
 });
 describe("apply方法测试", () => {
+    const customCallback = (err, data) => {
+        // ... 测试使用这个模拟返回值
+        return data;
+    };
     test("apply 模拟运行", () => {
-        const customCallback = (err, data) => {
-            // ...
-            return data;
-        };
         const customEvent = {
             userInfo: "xxxx",
             username: "Tom",
@@ -99,10 +99,6 @@ describe("apply方法测试", () => {
         app.apply();
     });
     test("传入回调函数含有异步的测试", done => {
-        const customCallback = (err, data) => {
-            // ...
-            return data;
-        };
         const customEvent = {
             userInfo: "xxxx",
             $url: "xx"
@@ -132,10 +128,6 @@ describe("apply方法测试", () => {
         console.log("apply end");
     });
     test("测试中间件把请求拦截掉+callback测试", () => {
-        const customCallback = (err, data) => {
-            // ...
-            return data;
-        };
         const customEvent = {
             userInfo: "xxxx",
             username: "Tom",
@@ -169,5 +161,33 @@ describe("apply方法测试", () => {
             });
         });
         app.apply();
+    });
+    test("数组匹配callback测试", () => {
+        const customEvent = {
+            userInfo: "xxxx",
+            username: "Tom",
+            $url: "test",
+            valid: false
+        };
+        const app = new TcbRouter({
+            callback: customCallback,
+            event: customEvent,
+            defaultRes: true
+        });
+        app.use(["nonono", "test", "hahaha"], (req, res, next) => {
+            next();
+        });
+        app.receive(["nonono", "test", "hahaha"], (req, res) => {
+            console.log("error");
+            expect(
+                res.callback(null, { valid: req.event.valid })
+            ).toMatchObject({
+                code: 0,
+                message: "ok",
+                data: {
+                    valid: false
+                }
+            });
+        });
     });
 });
