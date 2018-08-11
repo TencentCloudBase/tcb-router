@@ -151,3 +151,11 @@ wx.cloud.callFunction({
 ```bash
 yarn run test
 ```
+
+## 后话
+
+如有任何疑问和 bug 可 issue 或 pr，谢谢各位大佬
+
+## LICENSE
+
+MIT

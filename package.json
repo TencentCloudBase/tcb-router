@@ -4,7 +4,8 @@
   "description": "A router for tencent cloud functions",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "test:coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
   },
   "repository": {
     "type": "git",
@@ -15,11 +16,12 @@
   "bugs": {
     "url": "https://github.com/flytam/tcb-router/issues"
   },
-  "jest":{
+  "jest": {
     "testEnvironment": "node"
   },
   "homepage": "https://github.com/flytam/tcb-router#readme",
   "devDependencies": {
+    "coveralls": "^3.0.2",
     "jest": "^23.4.2"
   }
 }
