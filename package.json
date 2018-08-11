@@ -15,11 +15,9 @@
   "bugs": {
     "url": "https://github.com/flytam/tcb-router/issues"
   },
-  "jest":{
-    "testEnvironment": "node"
-  },
   "homepage": "https://github.com/flytam/tcb-router#readme",
   "devDependencies": {
+    "coveralls": "^3.0.2",
     "jest": "^23.4.2"
   }
 }
