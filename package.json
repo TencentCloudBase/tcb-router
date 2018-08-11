@@ -1,6 +1,6 @@
 {
   "name": "tcb-router",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "A router for tencent cloud functions",
   "main": "index.js",
   "scripts": {
