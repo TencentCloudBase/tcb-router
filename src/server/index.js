@@ -1,6 +1,6 @@
 const Res = require("./lib/res");
 class TcbRouter {
-    constructor({ event, defaultRes, callback }) {
+    constructor({ event = {}, defaultRes = false, callback } = {}) {
         if (!callback || typeof callback !== "function") {
             throw new Error("Callback must be a function");
         }

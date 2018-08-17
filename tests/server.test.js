@@ -15,6 +15,13 @@ describe("req测试", () => {
         expect(app._req).toHaveProperty("url", "xx");
     });
 });
+describe("异常抛出", () => {
+    test("不传入callback报错", () => {
+        expect(() => {
+            const app = new TcbRouter();
+        }).toThrowError(new Error("Callback must be a function"));
+    });
+});
 
 describe("use方法测试", () => {
     const app = new TcbRouter({
