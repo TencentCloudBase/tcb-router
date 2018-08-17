@@ -185,14 +185,10 @@ describe("apply方法测试", () => {
             next();
         });
         app.receive(["nonono", "test", "hahaha"], (req, res) => {
-            expect(
-                res.callback(null, { valid: req.event.valid })
-            ).toMatchObject({
-                code: 0,
-                message: "ok",
-                data: {
-                    valid: false
-                }
+            expect(res.callback(new Error("error"))).toMatchObject({
+                code: 1,
+                message: "error",
+                data: null
             });
         });
         app.apply();
