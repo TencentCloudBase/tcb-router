@@ -26,7 +26,7 @@ npm install tcb-router
 ```javascript
 const TcbRouter = require("tcb-router");
 
-exports.main = async (event, context, callback) => {
+exports.main = (event, context, callback) => {
     const app = new TcbRouter({ event, context, defaultRes: true, callback });
     app.use((req, res, next) => {
         // 可以像在express中那样使用中间件机制，不调用next的话就不会走到下一个路由了
@@ -44,7 +44,7 @@ exports.main = async (event, context, callback) => {
         res.callback(null, { result });
     });
 
-    await app.apply(); // 应用
+    return app.apply(); // 应用
 };
 ```
 
