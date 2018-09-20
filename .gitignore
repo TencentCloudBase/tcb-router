@@ -61,3 +61,5 @@ typings/
 .next
 
 coverage
+
+.DS_Store

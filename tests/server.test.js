@@ -1,7 +1,7 @@
 const TcbRouter = require("../src/server/index");
 describe("req测试", () => {
     const app = new TcbRouter({
-        callback: function() {},
+        callback: function () { },
         event: { userInfo: "xxxx", test: 123, $url: "xx" }
     });
     test("req", () => {
@@ -25,17 +25,17 @@ describe("异常抛出", () => {
 
 describe("use方法测试", () => {
     const app = new TcbRouter({
-        callback: function() {},
+        callback: function () { },
         event: { userInfo: "xxxx", test: 123, $url: "xx" }
     });
     test("use传入函数只有一个参数的情况", () => {
-        app.use((req, res) => {});
+        app.use((req, res) => { });
         expect(app._middlewares[0]).toHaveProperty("handle");
         expect(app._middlewares[0]).toHaveProperty("path", "*");
         expect(app._middlewares[0]).toHaveProperty("method", "middleware");
     });
     test("use传入函数有两个参数的情况", () => {
-        app.use("test", (req, res) => {});
+        app.use("test", (req, res) => { });
         expect(app._middlewares[1]).toHaveProperty("handle");
         expect(app._middlewares[1]).toHaveProperty("path", "test");
         expect(app._middlewares[1]).toHaveProperty("method", "middleware");
@@ -43,23 +43,23 @@ describe("use方法测试", () => {
 });
 describe("receive方法测试", () => {
     const app = new TcbRouter({
-        callback: function() {},
+        callback: function () { },
         event: { userInfo: "xxxx", test: 123, $url: "xx" }
     });
     test("receive测试传入函数只有一个参数的情况", () => {
-        app.receive((req, res) => {});
+        app.receive((req, res) => { });
         expect(app._middlewares[0]).toHaveProperty("handle");
         expect(app._middlewares[0]).toHaveProperty("path", "*");
         expect(app._middlewares[0]).toHaveProperty("method", "receive");
     });
     test("receive两个参数第一个参数为字符串的情况", () => {
-        app.receive("test", (req, res) => {});
+        app.receive("test", (req, res) => { });
         expect(app._middlewares[1]).toHaveProperty("handle");
         expect(app._middlewares[1]).toHaveProperty("path", "test");
         expect(app._middlewares[1]).toHaveProperty("method", "receive");
     });
     test("receive两个参数第一个参数为数组的情况", () => {
-        app.receive(["nonono", "test", "hahaha"], (req, res) => {});
+        app.receive(["nonono", "test", "hahaha"], (req, res) => { });
         expect(app._middlewares[2]).toHaveProperty("handle");
         expect(app._middlewares[2]).toHaveProperty("path", [
             "nonono",

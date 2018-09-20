@@ -1,0 +1,16 @@
+{
+  "name": "login",
+  "version": "1.0.0",
+  "description": "A router for tencent cloud functions",
+  "main": "./src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/flytam/tcb-router.git"
+  },
+  "author": "flytam",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/flytam/tcb-router/issues"
+  },
+  "homepage": "https://github.com/flytam/tcb-router#readme"
+}

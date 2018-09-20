@@ -1,5 +1,0 @@
-node_modules
-cloud/functions/verifyIdentity/config/index.js
-cloud/functions/loginRegister/config/index.js
-cloud/functions/pay/config/index.js
-client/config/index.js

@@ -1,0 +1,19 @@
+<!--index.wxml-->
+<view class="container">
+
+  <!-- 调用/user -->
+  <view class="uploader">
+    <view class="uploader-text" bindtap="callRouterUser">
+      <text>调用 user</text>
+    </view>
+  </view>
+
+
+  <!-- 调用/timer -->
+  <view class="uploader">
+    <view class="uploader-text" bindtap="callRouterTimer">
+      <text>调用 timer (定时500ms后返回)</text>
+    </view>
+  </view>
+
+</view>
