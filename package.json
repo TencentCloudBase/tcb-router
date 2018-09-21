@@ -17,6 +17,14 @@
     "url": "https://github.com/flytam/tcb-router/issues"
   },
   "homepage": "https://github.com/flytam/tcb-router#readme",
+  "jest": {
+    "testEnvironment": "node",
+    "roots": [
+      "<rootDir>/tests/"
+    ],
+    "collectCoverage": true,
+    "coverageDirectory": "./tests/coverage"
+  },
   "devDependencies": {
     "coveralls": "^3.0.2",
     "jest": "^23.4.2"

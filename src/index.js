@@ -8,6 +8,10 @@ class TcbRouter {
         this._res = {};
     }
 
+    /**
+     * add path to _routerMiddlewares
+     * @param {String} path
+     */
     _addRoute(path) {
         if (!this._routerMiddlewares.hasOwnProperty(path)) {
             this._routerMiddlewares[path] = {
@@ -16,6 +20,11 @@ class TcbRouter {
         }
     }
 
+    /**
+     * add middleware to _routerMiddlewares
+     * @param {String|Array} path
+     * @param {Function} middleware
+     */
     _addMiddleware(path, middleware) {
         let paths = [];
 
@@ -32,6 +41,11 @@ class TcbRouter {
         });
     }
 
+    /**
+     * use middleware for all routes
+     * @param {String} path
+     * @param {Function} middleware
+     */
     use() {
         let path = null;
         let handler = null;
@@ -50,12 +64,13 @@ class TcbRouter {
         }
 
         this._addMiddleware(path, handler);
-        // this._middlewares.push({
-        //     handler,
-        //     path
-        // });
     }
 
+    /**
+     * set routes
+     * @param {String|Array} path 
+     * @param {Function} middleware
+     */
     router(path = '*') {
 
         for (let i = 1, len = arguments.length; i < len; i++) {
@@ -65,22 +80,24 @@ class TcbRouter {
             }
 
             this._addMiddleware(path, handler);
-
-            // this._middlewares.push({
-            //     handler,
-            //     path
-            // });
         }
     }
 
+    /**
+     * start the route server
+     */
     serve() {
 
+        let _routerMiddlewares = this._routerMiddlewares;
+        let url = this._req.url;
+
         // try to  match path
-        if (this._routerMiddlewares.hasOwnProperty(this._req.url)) {
-            let middlewares = this._routerMiddlewares[this._req.url].middlewares;
+        if (_routerMiddlewares.hasOwnProperty(url)
+            || _routerMiddlewares.hasOwnProperty('*')) {
+            let middlewares = (_routerMiddlewares[url]) ? _routerMiddlewares[url].middlewares : [];
             // put * path middlewares on the queue head
-            if (this._routerMiddlewares['*']) {
-                middlewares = [].concat(this._routerMiddlewares['*'].middlewares, middlewares);
+            if (_routerMiddlewares['*']) {
+                middlewares = [].concat(_routerMiddlewares['*'].middlewares, middlewares);
             }
 
             const fn = compose(middlewares);
