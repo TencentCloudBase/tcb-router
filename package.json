@@ -9,12 +9,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/flytam/tcb-router.git"
+    "url": "git+https://github.com/TencentCloudBase/tcb-router.git"
   },
-  "author": "flytam",
+  "author": "tcb",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/flytam/tcb-router/issues"
+    "url": "https://github.com/TencentCloudBase/tcb-router/issues"
   },
   "homepage": "https://github.com/flytam/tcb-router#readme",
   "jest": {
