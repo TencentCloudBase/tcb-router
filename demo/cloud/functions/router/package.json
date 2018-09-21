@@ -12,5 +12,8 @@
   "bugs": {
     "url": "https://github.com/flytam/tcb-router/issues"
   },
-  "homepage": "https://github.com/flytam/tcb-router#readme"
+  "homepage": "https://github.com/flytam/tcb-router#readme",
+  "dependencies": {
+    "tcb-router": "^1.1.1"
+  }
 }
