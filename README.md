@@ -1,10 +1,10 @@
 # tcb-router
 
 [![NPM version][npm-image]][npm-url]
-[![Build Status](https://travis-ci.org/flytam/tcb-router.svg?branch=master)](https://travis-ci.org/flytam/tcb-router)
+[![Build Status](https://travis-ci.org/TencentCloudBase/tcb-router.svg?branch=master)](https://travis-ci.org/TencentCloudBase/tcb-router)
 [![npm download][download-image]][download-url]
 [![npm license][license-image]][download-url]
-[![Coverage Status](https://coveralls.io/repos/github/flytam/tcb-router/badge.svg?branch=master)](https://coveralls.io/github/flytam/tcb-router?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/TencentCloudBase/tcb-router/badge.svg?branch=master)](https://coveralls.io/github/TencentCloudBase/tcb-router?branch=master)
 
 [npm-image]: https://img.shields.io/npm/v/tcb-router.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/tcb-router
