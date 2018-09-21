@@ -1,35 +1,35 @@
 {
-	"miniprogramRoot": "client/",
-	"cloudfunctionRoot": "cloud/functions/",
-	"setting": {
-		"urlCheck": true,
-		"es6": true,
-		"postcss": true,
-		"minified": true,
-		"newFeature": true
-	},
-	"appid": "wx0df19af0220bd189",
-	"projectname": "tcb-router",
-	"libVersion": "2.3.0",
-	"condition": {
-		"search": {
-			"current": -1,
-			"list": []
-		},
-		"conversation": {
-			"current": -1,
-			"list": []
-		},
-		"plugin": {
-			"current": -1,
-			"list": []
-		},
-		"game": {
-			"list": []
-		},
-		"miniprogram": {
-			"current": 0,
-			"list": []
-		}
-	}
+  "miniprogramRoot": "client/",
+  "cloudfunctionRoot": "cloud/functions/",
+  "setting": {
+    "urlCheck": true,
+    "es6": true,
+    "postcss": true,
+    "minified": true,
+    "newFeature": true
+  },
+  "appid": "",
+  "projectname": "tcb-router",
+  "libVersion": "2.3.0",
+  "condition": {
+    "search": {
+      "current": -1,
+      "list": []
+    },
+    "conversation": {
+      "current": -1,
+      "list": []
+    },
+    "plugin": {
+      "current": -1,
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "miniprogram": {
+      "current": 0,
+      "list": []
+    }
+  }
 }
