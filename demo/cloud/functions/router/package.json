@@ -1,5 +1,5 @@
 {
-  "name": "login",
+  "name": "router",
   "version": "1.0.0",
   "description": "A router for tencent cloud functions",
   "main": "./src/index.js",
